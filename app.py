@@ -132,3 +132,6 @@ st.write("""
 - LLP giảm khi ROA tăng
 - NPL là yếu tố ảnh hưởng mạnh nhất
 
+
+""")
+
