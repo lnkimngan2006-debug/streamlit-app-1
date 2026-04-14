@@ -41,9 +41,10 @@ st.write("Khi NPL tăng, LLP có xu hướng tăng.")
 # =======================
 st.subheader("Nhap gia tri du bao")
 
-npl = st.slider("NPL", 0.0, 0.2, 0.05, key="npl")
-roa = st.slider("ROA", 0.0, 0.05, 0.01, key="roa")
-size = st.slider("SIZE", 14.0, 22.0, 18.0, key="size")
+npl = st.slider("NPL", 0.0, 0.2, 0.05)
+nim = st.slider("NIM", 0.0, 0.1, 0.04)
+roa = st.slider("ROA", 0.0, 0.05, 0.01)
+size = st.slider("SIZE", 14.0, 22.0, 18.0)
 
 # =======================
 # DỰ BÁO
