@@ -48,9 +48,13 @@ size = st.slider("SIZE", 14.0, 22.0, 18.0, key="size")
 # =======================
 # DỰ BÁO
 # =======================
-llp_pred = npl*0.5 + roa*0.3 + size*0.001
+llp_pred = -0.0339 \
+           + 0.249139 * nim \
+           + 0.064820 * npl \
+           - 0.281107 * roa \
+           + 0.00212 * size
 
-st.write("LLP du bao:", round(llp_pred, 4))
+st.write("LLP dự báo:", round(llp_pred, 4))
 
 # CHÚ THÍCH
 st.write("Nguoi dung co the thay doi cac bien de xem ket qua du bao.")
