@@ -9,7 +9,7 @@ st.title("Dự báo dự phòng rủi ro tín dụng (Loan Loss Provision - LLP)
 
 st.write("""
 Ứng dụng mô phỏng mức độ rủi ro tín dụng của ngân hàng dựa trên mô hình hồi quy.
-Các biến đầu vào được sử dụng để đánh giá tác động đến mức trích lập dự phòng (LLP).
+Các biến tài chính được sử dụng để đánh giá mức trích lập dự phòng (LLP).
 """)
 
 # ======================
@@ -48,8 +48,8 @@ size = st.slider("SIZE (Quy mô ngân hàng)", 14.0, 22.0, 17.5)
 
 st.write("""
 Chú thích:
-Các giá trị mặc định được lựa chọn gần với giá trị trung bình trong nghiên cứu.
-Người dùng có thể thay đổi để quan sát tác động đến LLP.
+Các giá trị mặc định gần với trung bình trong nghiên cứu.
+Người dùng thay đổi để quan sát tác động đến LLP.
 """)
 
 # ======================
@@ -61,7 +61,7 @@ st.subheader("Kết quả dự báo")
 st.write("Giá trị LLP:", round(llp, 5))
 
 # ======================
-# 5. BIỂU ĐỒ 1
+# 5. BIỂU ĐỒ 1: NIM
 # ======================
 st.subheader("Biểu đồ 1: Mối quan hệ giữa NIM và LLP")
 
@@ -79,11 +79,17 @@ st.pyplot(fig)
 
 st.caption("""
 Chú thích: Biểu đồ thể hiện mối quan hệ cùng chiều giữa NIM và LLP.
-Khi NIM tăng, ngân hàng mở rộng hoạt động tín dụng, làm gia tăng rủi ro và mức trích lập dự phòng.
+""")
+
+st.write("""
+Giải thích:
+Khi NIM tăng, ngân hàng thu được nhiều lợi nhuận từ hoạt động cho vay.
+Điều này thường đi kèm với việc mở rộng tín dụng, làm gia tăng rủi ro,
+từ đó ngân hàng phải trích lập dự phòng nhiều hơn.
 """)
 
 # ======================
-# 6. BIỂU ĐỒ 2
+# 6. BIỂU ĐỒ 2: NPL
 # ======================
 st.subheader("Biểu đồ 2: Mối quan hệ giữa NPL và LLP")
 
@@ -101,11 +107,17 @@ st.pyplot(fig2)
 
 st.caption("""
 Chú thích: Biểu đồ cho thấy mối quan hệ cùng chiều mạnh giữa NPL và LLP.
-Khi tỷ lệ nợ xấu tăng, ngân hàng phải tăng trích lập dự phòng để bù đắp rủi ro tín dụng.
+""")
+
+st.write("""
+Giải thích:
+Khi tỷ lệ nợ xấu tăng, ngân hàng đối mặt với nguy cơ mất vốn cao hơn.
+Do đó, ngân hàng phải tăng trích lập dự phòng để bù đắp rủi ro tín dụng.
+Đây là yếu tố ảnh hưởng mạnh nhất đến LLP.
 """)
 
 # ======================
-# 7. BIỂU ĐỒ 3
+# 7. BIỂU ĐỒ 3: ROA
 # ======================
 st.subheader("Biểu đồ 3: Mối quan hệ giữa ROA và LLP")
 
@@ -123,7 +135,13 @@ st.pyplot(fig3)
 
 st.caption("""
 Chú thích: Biểu đồ thể hiện mối quan hệ ngược chiều giữa ROA và LLP.
-Khi ngân hàng hoạt động hiệu quả hơn, rủi ro tín dụng giảm, do đó mức dự phòng cũng giảm.
+""")
+
+st.write("""
+Giải thích:
+ROA cao cho thấy ngân hàng hoạt động hiệu quả.
+Khi hiệu quả hoạt động tăng, khả năng kiểm soát rủi ro tốt hơn,
+do đó mức trích lập dự phòng rủi ro tín dụng sẽ giảm.
 """)
 
 # ======================
@@ -134,9 +152,9 @@ st.subheader("Kết luận")
 st.write("""
 - NIM và NPL có tác động cùng chiều đến LLP  
 - ROA có tác động ngược chiều đến LLP  
-- NPL là yếu tố ảnh hưởng mạnh nhất đến rủi ro tín dụng  
+- NPL là yếu tố ảnh hưởng mạnh nhất  
 
-Ứng dụng giúp minh họa trực quan mối quan hệ giữa các biến tài chính và dự phòng rủi ro tín dụng.
+Ứng dụng giúp minh họa trực quan mối quan hệ giữa các biến tài chính và rủi ro tín dụng.
 """)
 
 
