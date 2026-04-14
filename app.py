@@ -1,15 +1,14 @@
 import streamlit as st
 import numpy as np
-import plotly.graph_objects as go
+import matplotlib.pyplot as plt
 
 # ======================
 # TIÊU ĐỀ
 # ======================
 st.title("Dashboard dự báo LLP")
 
-st.write("Ứng dụng dự báo rủi ro tín dụng dựa trên mô hình hồi quy.")
-
 # ======================
+# SIDEBAR (giống app xịn)
 # ======================
 st.sidebar.header("Nhập dữ liệu")
 
@@ -26,69 +25,57 @@ st.subheader("Mô hình")
 st.latex(r"LLP = -0.0339 + 0.249NIM + 0.064NPL - 0.281ROA + 0.00212SIZE")
 
 # ======================
-# TÍNH LLP
+# KẾT QUẢ (hiển thị đẹp hơn)
 # ======================
 llp = -0.0339 + 0.249*nim + 0.064*npl - 0.281*roa + 0.00212*size
 
-st.subheader("Kết quả dự báo")
+st.subheader("Kết quả")
 st.metric("LLP", round(llp, 5))
 
 # ======================
+# CHIA 2 CỘT
 # ======================
 col1, col2 = st.columns(2)
 
-# ======================
-# BIỂU ĐỒ NIM
-# ======================
+# ===== BIỂU ĐỒ NIM =====
 with col1:
     x = np.linspace(0, 0.1, 50)
     y = -0.0339 + 0.249*x + 0.064*npl - 0.281*roa + 0.00212*size
 
-    fig = go.Figure()
-    fig.add_trace(go.Scatter(x=x, y=y, mode='lines', name='LLP'))
+    fig, ax = plt.subplots()
+    ax.plot(x, y)
+    ax.set_title("NIM → LLP")
+    ax.set_xlabel("NIM")
+    ax.set_ylabel("LLP")
 
-    fig.update_layout(
-        title="Ảnh hưởng NIM → LLP",
-        xaxis_title="NIM",
-        yaxis_title="LLP"
-    )
+    st.pyplot(fig)
 
-    st.plotly_chart(fig, use_container_width=True)
-
-# ======================
-# BIỂU ĐỒ NPL
-# ======================
+# ===== BIỂU ĐỒ NPL =====
 with col2:
     x2 = np.linspace(0, 0.2, 50)
     y2 = -0.0339 + 0.249*nim + 0.064*x2 - 0.281*roa + 0.00212*size
 
-    fig2 = go.Figure()
-    fig2.add_trace(go.Scatter(x=x2, y=y2, mode='lines', name='LLP'))
+    fig2, ax2 = plt.subplots()
+    ax2.plot(x2, y2)
+    ax2.set_title("NPL → LLP")
+    ax2.set_xlabel("NPL")
+    ax2.set_ylabel("LLP")
 
-    fig2.update_layout(
-        title="Ảnh hưởng NPL → LLP",
-        xaxis_title="NPL",
-        yaxis_title="LLP"
-    )
-
-    st.plotly_chart(fig2, use_container_width=True)
+    st.pyplot(fig2)
 
 # ======================
-# BIỂU ĐỒ ROA (full width)
+# BIỂU ĐỒ ROA (FULL)
 # ======================
 x3 = np.linspace(0, 0.05, 50)
 y3 = -0.0339 + 0.249*nim + 0.064*npl - 0.281*x3 + 0.00212*size
 
-fig3 = go.Figure()
-fig3.add_trace(go.Scatter(x=x3, y=y3, mode='lines', name='LLP'))
+fig3, ax3 = plt.subplots()
+ax3.plot(x3, y3)
+ax3.set_title("ROA → LLP")
+ax3.set_xlabel("ROA")
+ax3.set_ylabel("LLP")
 
-fig3.update_layout(
-    title="Ảnh hưởng ROA → LLP",
-    xaxis_title="ROA",
-    yaxis_title="LLP"
-)
-
-st.plotly_chart(fig3, use_container_width=True)
+st.pyplot(fig3)
 
 # ======================
 # NHẬN XÉT
@@ -99,6 +86,4 @@ st.write("""
 - NIM tăng → LLP tăng  
 - NPL tăng → LLP tăng mạnh  
 - ROA tăng → LLP giảm  
-
-NPL là yếu tố ảnh hưởng lớn nhất đến rủi ro tín dụng.
 """)
