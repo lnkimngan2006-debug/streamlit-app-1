@@ -48,12 +48,7 @@ size = st.slider("SIZE", 14.0, 22.0, 18.0, key="size")
 # =======================
 # DỰ BÁO
 # =======================
-llp_pred = -0.0339 \
-           + 0.249139 * nim \
-           + 0.064820 * npl \
-           - 0.281107 * roa \
-           + 0.00212 * size
-
+llp_pred = -0.0339 + 0.249139*nim + 0.064820*npl - 0.281107*roa + 0.00212*size
 st.write("LLP dự báo:", round(llp_pred, 4))
 
 # CHÚ THÍCH
