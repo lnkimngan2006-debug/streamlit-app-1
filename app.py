@@ -7,11 +7,6 @@ import matplotlib.pyplot as plt
 # ======================
 st.title("Dự báo dự phòng rủi ro tín dụng (LLP)")
 
-st.write("""
-Ứng dụng này giúp dự báo mức độ rủi ro tín dụng của ngân hàng dựa trên các chỉ số tài chính.
-Người dùng nhập các biến và hệ thống sẽ tính toán giá trị LLP.
-""")
-
 # ======================
 # 2. MÔ HÌNH
 # ======================
